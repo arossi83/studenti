@@ -107,8 +107,8 @@ setx /M PATH "$($env:path);C:\Users\<your-user-name>\Scripts"
 First command enable the use of costum script while the second add the dir which contains the script to your PATH.
 
 #### Start the Docker
-- Start XLaunch: a GUI menu will be shown, leave all settings as they are by default but on third page add a thick mark on ```Disable access controll``. Continue and end the configuration, X server will start.
-- Open a Powershell (as normal user), navigate on the directory where you want to work and run ```StartDocker.ps1```. At this point the docker will start and if everything is fine you will be logged into a Linux machine as "studente" and inside the "current_dir" directory. This directory is the same one you have in the host and represent the way to share data between host and docker. You can launch ROOT simply giving ```root``` command and also the graphics should be correctly enabled.
+- Start XLaunch: a GUI menu will be shown, leave all settings as they are by default but on third page add a thick mark on ```Disable access controll```. Continue and end the configuration, X server will start. ([Example](https://dev.to/darksmile92/run-gui-app-in-linux-docker-container-on-windows-host-4kde))
+- Open a Powershell (as normal user), navigate on the directory where you want to work and run ```StartDocker.ps1```. At this point the docker will start and if everything is fine you will be logged into a Linux machine as "studente" and inside the "current_dir" directory. This directory is the same one you have in the host and represent the way to share data between host and docker. You can launch ROOT simply giving ```root``` command. Graphics interface should be correctly enabled.
 
 
 
