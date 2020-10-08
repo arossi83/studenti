@@ -95,7 +95,7 @@ will
   - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
   - open ROOT CINT (graphics enabled, i.e. `root` command)
 
-##Instructions for Windows 10 as Host:
+## Instructions for Windows 10 as Host:
 #### Preliminary
 - Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
 - Install [vcxsrv](https://sourceforge.net/projects/vcxsrv/).
