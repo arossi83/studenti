@@ -62,10 +62,9 @@ docker run --rm -it -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$ip:0 arossi83/s
 ```
 
 ##### Windows
-To enable graphics, you must have [Xming](https://sourceforge.net/projects/xming/) installed. Make sure Xming is whitelisted in the Windows firewall when prompted. After installing Xming, white-list the IP-address of the Docker containers in Xming by running the following command in PowerShell as administrator: `Add-Content 'C:\Program Files (x86)\Xming\X0.hosts' "`r`n10.0.75.2"`
-Then restart Xming and start the container with the following command: 
+To enable graphics, you must have [vcxsrv](https://sourceforge.net/projects/vcxsrv/) installed. Make sure Xming is whitelisted in the Windows firewall when prompted. After installing vcxsrv, start XLaunch leave all settings as they are but add the thick on "Disable access control" (on third page), after this launch the docker:
 ```
-docker run --rm -it -e DISPLAY=10.0.75.1:0 arossi83/studenti:latest
+docker run --rm -it -e DISPLAY=<your-ip>:0.0 arossi83/studenti:latest
 ```
 
 ## Examples (OSX as "host")
@@ -95,6 +94,23 @@ will
   - export the display;
   - export the current dir (i.e. `pwd`) to the container 'current_dir' inside the user (i.e. 'studente') home. This is quite usefull and makes the bash and ROOT history persistent;
   - open ROOT CINT (graphics enabled, i.e. `root` command)
+
+##Instructions for Windows 10 as Host:
+#### Preliminary
+- Install [Docker Desktop](https://www.docker.com/products/docker-desktop).
+- Install [vcxsrv](https://sourceforge.net/projects/vcxsrv/).
+- Download a starting script from here [link](https://istnazfisnucl-my.sharepoint.com/:u:/g/personal/alrossi_infn_it/EZ5BR1_oqWtAuCzylXTr4lABmXrUPg9tO8nzagR5ZPQ4xA?e=Lecc5J). I suggest to create a directory inside your home (i.e. C:\Users\<your-user-name>\Scripts) and move the script there. After this you can add this directory to your PATH in order to be able to execute this script from everywhere inside the machine. To do this you need to open a Powershell as Administrator and type the following commands:
+```
+Set-ExecutionPolicy RemoteSigned
+setx /M PATH "$($env:path);C:\Users\<your-user-name>\Scripts"
+```
+First command enable the use of costum script while the second add the dir which contains the script to your PATH.
+
+#### Start the Docker
+- Start XLaunch: a GUI menu will be shown, leave all settings as they are by default but on third page add a thick mark on ```Disable access controll``. Continue and end the configuration, X server will start.
+- Open a Powershell (as normal user), navigate on the directory where you want to work and run ```StartDocker.ps1```. At this point the docker will start and if everything is fine you will be logged into a Linux machine as "studente" and inside the "current_dir" directory. This directory is the same one you have in the host and represent the way to share data between host and docker. You can launch ROOT simply giving ```root``` command and also the graphics should be correctly enabled.
+
+
 
 ## Examples of different containers
 [See GitHub for example Dockerfiles.](https://github.com/root-project/docker-examples)
